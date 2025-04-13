@@ -29,9 +29,7 @@ async def start_handler(message: types.Message):
     await message.answer("Привет! Доступные события:")
     for eid, ev in events.items():
         await message.answer(
-            f"{ev['title']}
-📅 {ev['date']}
-👥 {len(ev['attendees'])}/{ev['limit']}",
+            f"{ev['title']}\n📅 {ev['date']}\n👥 {len(ev['attendees'])}/{ev['limit']}",
             reply_markup=event_kb(eid)
         )
 
@@ -50,9 +48,7 @@ async def signup(callback: types.CallbackQuery):
         await callback.answer("Записан!")
 
     await callback.message.edit_text(
-        f"{event['title']}
-📅 {event['date']}
-👥 {len(event['attendees'])}/{event['limit']}",
+        f"{event['title']}\n📅 {event['date']}\n👥 {len(event['attendees'])}/{event['limit']}",
         reply_markup=event_kb(eid)
     )
 
